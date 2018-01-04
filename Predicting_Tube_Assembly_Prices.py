@@ -70,83 +70,6 @@ def my_merger(bill_of_materials_df,comp_df,component_id_list):
     return(list_of_counts)
 
 
-# # Data Extraction
-# 
-# Folder: C:\Users\Casey\Desktop\Capstone Project\competition_data
-# 
-# Tables:
-# 
-# bill_of_materials.csv, 
-# comp_adaptor.csv, 
-# comp_boss.csv, 
-# comp_elbow.csv, 
-# comp_float.csv, 
-# comp_hfl.csv, 
-# comp_other.csv, 
-# comp_sleeve.csv, 
-# comp_straight.csv, 
-# comp_tee.csv, 
-# comp_threaded.csv, 
-# components.csv, 
-# specs.csv, 
-# test_set.csv, 
-# train_set.csv, 
-# tube.csv, 
-# tube_end_form.csv, 
-# type_component.csv, 
-# type_connection.csv, 
-# type_end_form.csv
-
-# In[4]:
-
-bill_of_materials = pd.read_csv('C:\\Users\\Casey\\Desktop\\Capstone Project\\competition_data\\bill_of_materials.csv')
-comp_adaptor = pd.read_csv('C:\\Users\\Casey\\Desktop\\Capstone Project\\competition_data\\comp_adaptor.csv')
-comp_boss = pd.read_csv('C:\\Users\\Casey\\Desktop\\Capstone Project\\competition_data\\comp_boss.csv')
-comp_elbow = pd.read_csv('C:\\Users\\Casey\\Desktop\\Capstone Project\\competition_data\\comp_elbow.csv')
-comp_float = pd.read_csv('C:\\Users\\Casey\\Desktop\\Capstone Project\\competition_data\\comp_float.csv')
-comp_hfl = pd.read_csv('C:\\Users\\Casey\\Desktop\\Capstone Project\\competition_data\\comp_hfl.csv')
-comp_other = pd.read_csv('C:\\Users\\Casey\\Desktop\\Capstone Project\\competition_data\\comp_other.csv')
-comp_sleeve = pd.read_csv('C:\\Users\\Casey\\Desktop\\Capstone Project\\competition_data\\comp_sleeve.csv')
-comp_straight = pd.read_csv('C:\\Users\\Casey\\Desktop\\Capstone Project\\competition_data\\comp_straight.csv')
-comp_tee = pd.read_csv('C:\\Users\\Casey\\Desktop\\Capstone Project\\competition_data\\comp_tee.csv')
-comp_threaded = pd.read_csv('C:\\Users\\Casey\\Desktop\\Capstone Project\\competition_data\\comp_threaded.csv')
-components = pd.read_csv('C:\\Users\\Casey\\Desktop\\Capstone Project\\competition_data\\components.csv')
-specs = pd.read_csv('C:\\Users\\Casey\\Desktop\\Capstone Project\\competition_data\\specs.csv')
-test_set = pd.read_csv('C:\\Users\\Casey\\Desktop\\Capstone Project\\competition_data\\test_set.csv')
-train_set = pd.read_csv('C:\\Users\\Casey\\Desktop\\Capstone Project\\competition_data\\train_set.csv')
-tube = pd.read_csv('C:\\Users\\Casey\\Desktop\\Capstone Project\\competition_data\\tube.csv')
-tube_end_form = pd.read_csv('C:\\Users\\Casey\\Desktop\\Capstone Project\\competition_data\\tube_end_form.csv')
-type_component = pd.read_csv('C:\\Users\\Casey\\Desktop\\Capstone Project\\competition_data\\type_component.csv')
-type_connection = pd.read_csv('C:\\Users\\Casey\\Desktop\\Capstone Project\\competition_data\\type_connection.csv')
-type_end_form = pd.read_csv('C:\\Users\\Casey\\Desktop\\Capstone Project\\competition_data\\type_end_form.csv')
-
-
-# # Data Table Descriptions
-# ** Table size and shape **
-
-# In[5]:
-
-comp_threaded_dim=(comp_threaded.shape)
-bill_of_materials_dim=bill_of_materials.shape
-comp_adaptor_dim=comp_adaptor.shape
-comp_boss_dim=comp_boss.shape
-components_dim=components.shape
-comp_elbow_dim=comp_elbow.shape
-comp_float_dim=comp_float.shape
-comp_hfl_dim=comp_hfl.shape
-train_dim=train_set.shape
-comp_other_dim=comp_other.shape
-type_connection_dim=type_connection.shape
-specs_dim=specs.shape
-comp_sleeve_dim=comp_sleeve.shape
-type_end_form_dim=type_end_form.shape
-test_set_dim=test_set.shape
-comp_tee_dim=comp_tee.shape
-type_comp_dim=type_component.shape
-comp_straight_dim=comp_straight.shape
-tube_dim=tube.shape
-tube_end_form_dim=tube_end_form.shape
-
 tablesizes = [
     ('comp_threaded_dim',comp_threaded_dim),('bill_of_materials_dim',bill_of_materials_dim),
     ('comp_adaptor_dim',comp_adaptor_dim),('comp_boss_dim',comp_boss_dim),
@@ -160,234 +83,6 @@ tablesizes = [
     ('tube_dim',tube_dim),('tube_end_form_dim',tube_end_form_dim)
              ]
 pd.DataFrame(dict(tablesizes)).transpose()
-
-
-# ** Data Table Headers and Column Names   **
-
-# In[6]:
-
-#comp_float.head(2)
-#comp_other.head(2)
-#comp_straight.head(2)
-#comp_tee.head(2)
-#comp_elbow.head(2)
-#comp_sleeve.head(2)
-#comp_threaded.head(2)
-#comp_hfl.head(2)
-#comp_boss.head(2)
-#bill_of_materials.head(2)
-#components.head(2)
-#tube.head(2)
-#comp_adaptor.head(2)
-#tube_end_form.head(2)
-#type_component.head(2)
-#type_connection.head(2)
-#type_end_form.head(2)
-#train_set.head(2)
-#test_set.head(2)
-
-
-# # Data Table Relationships
-
-# In[7]:
-
-Image(filename='C:\\Users\\Casey\\Desktop\\Capstone Project\\Schema.jpg') 
-
-
-# # Exploratory Data Analysis
-# 
-# ** Continuous Feature Data Visualizations **
-
-# In[8]:
-
-plt.hist(train_set['cost'],bins=1000)
-plt.title('Histogram of Price (cost)')
-plt.show()
-
-
-# In[9]:
-
-plt.hist(train_set['cost'][train_set['cost']<21],bins=1000)
-plt.title('Histogram of Price (cost) Less than $21.00')
-plt.show()
-
-
-# In[10]:
-
-plt.hist(train_set['quantity'],bins=1000)
-plt.title('Histogram of quantity')
-plt.show()
-
-
-# In[11]:
-
-plt.hist(train_set['quantity'][train_set.quantity<=40],bins=1000)
-plt.title('Histogram of quantity Less than 40')
-plt.show()
-
-
-# In[12]:
-
-plt.scatter(train_set['cost'],train_set['quantity'],c='blue')
-plt.title('Quantity Verse Price (cost)')
-plt.show()
-
-
-# In[13]:
-
-#bins = [0,500,1000,5000,10000,15000]
-#annual_usage_counts=pd.cut(train_set['annual_usage'],bins)
-#annual_usage_counts.value_counts()
-
-
-# In[14]:
-
-#bins = [0,100,200,300,400,500]
-#min_order_counts=pd.cut(train_set['min_order_quantity'],bins)
-#in_order_counts.value_counts()
-
-#Even though the maximum values looked suspicious in the 5 number summaries, a closer look reveals that some values might be outliers but do not seem erroneous.
-
-
-# In[15]:
-
-## comp_adaptor
-#comp_adaptor.describe()
-
-
-# In[16]:
-
-# comp_adaptor
-#comp_adaptor['thread_size_2'].value_counts()
-
-
-# In[17]:
-
-# comp_adaptor
-#comp_adaptor['thread_pitch_2'].value_counts()
-#Thread size number 2 and thread pitch number 2 each have a single erroneous value of 9999, to be replaced with NaN
-
-
-# In[18]:
-
-# tube table
-#tube.describe()
-
-
-# In[19]:
-
-# tube table
-#tube['num_boss'].value_counts()
-
-
-# In[20]:
-
-# tube table
-#tube['num_bracket'].value_counts()
-
-
-# In[21]:
-
-# tube table
-#tube['other'].value_counts()
-
-
-# In[22]:
-
-# bill_of_materials
-#bill_of_materials.describe()
-#bill_of_materials.head(10)
-
-
-# In[23]:
-
-# comp_boss
-#comp_boss.describe()
-#bins = [0,25,50,75,100,1000,9999]
-#height_counts=pd.cut(comp_boss['height_over_tube'],bins)
-#height_counts.value_counts()
-
-
-# In[24]:
-
-#comp_boss.describe()
-#Looks to me that the 999 value is erroneous, but shouldn't be mean or median imputed.  This is a feature of a particular component, but still continous.  Change to NaN or Null.
-
-
-# In[25]:
-
-# comp_hfl
-#comp_hfl.describe()
-
-
-# In[26]:
-
-#comp_sleeve
-#comp_sleeve.describe()
-#Change the 9999 values to NaN
-
-
-# In[27]:
-
-# comp_elbow
-#comp_elbow.describe()
-#bins = [0,25,50,75,100,9999]
-#elbow_counts=pd.cut(comp_elbow['drop_length'],bins)
-#elbow_counts.value_counts()
-#Change the 9999 values to NaN.
-
-
-# In[28]:
-
-# comp_tee
-#comp_tee.describe()
-
-
-# In[29]:
-
-# comp_straight
-#comp_straight.describe()
-
-
-# In[30]:
-
-# comp_other
-#comp_other.describe()
-
-
-# In[31]:
-
-# comp_float
-#comp_float.describe()
-
-
-# In[32]:
-
-# comp_threaded
-#comp_threaded.describe()
-#bins = [0,25,50,100,9999]
-#threaded_counts=pd.cut(comp_threaded['nominal_size_3'],bins)
-#threaded_counts.value_counts()
-#Nominal size 4 has no values contained in it.  Nominal size 3 and size 2 has a maximum value of 9999.
-
-
-# In[33]:
-
-# comp_threaded
-#bins = [0,25,50,100,9999]
-#threaded_counts=pd.cut(comp_threaded['nominal_size_2'],bins)
-#threaded_counts.value_counts()
-#Switch the 9999 value to NaN
-
-
-# # Exploratory Data Analysis Summary
-# 
-# There are many tables, many features in each table, and a somewhat complicated relationship among the tables.  The training dataset can be connected to the remaining features contained in other tables through key relationships between tables.  There are features that simply describe features of tube components with labels.  Others have have a continuous scale but the frequency is so small that they can be changed to indicator variables in another table.  A few columns had erroneous values that are likely there as a placeholder when no number is available or unecessary.  They are all contained in tables that describe attritubes of tubes using tables, so I'm going to impute those with NaN/Nulls.  
-
-# # Modeling Price With 'train_set'
-# ** 'train_set' Preprocessing **
-
-# In[5]:
 
 std_scaler = StandardScaler()
 train_set_num = train_set.drop(['bracket_pricing','tube_assembly_id','supplier','quote_date'],axis=1)
@@ -408,9 +103,6 @@ features = train.drop('cost_std_scaled',axis=1)
 X_train, X_test, y_train, y_test = train_test_split(features, price, test_size=0.20, random_state=42)
 
 print("Training and testing split was successful.")
-
-
-# ** Modeling Price Using 'train_set' **
 
 # In[36]:
 
@@ -482,7 +174,6 @@ model.fit(X,y,epochs=10,batch_size=10)
 NN_keras_mse_train = mean_squared_error(y_train.as_matrix(),model.predict(X_train.as_matrix()))
 NN_keras_mse_valid = mean_squared_error(y_test.as_matrix(),model.predict(X_test.as_matrix()))
 
-
 # In[39]:
 
 train_mse_dict = dict({'All Zeros': (all_zeros_mse),
@@ -505,7 +196,6 @@ valid_mse_dict = dict({'All Zeros': (all_zeros_mse),
                'Linear Regression':linear_regression_mse_valid
                })
 valid_mse_dict
-
 
 # The random forest regressor model performed best on the test data set using the MSE.
 
@@ -543,28 +233,6 @@ df=pd.DataFrame(std_scaler.fit_transform(test_set_num))
 df.columns = test_set_num.columns + '_std_scaled'
 test = pd.concat([df.reset_index(drop=True),bracket_pricing_ind,supplier_ind],axis=1)
 
-
-# In[44]:
-
-# For output to put onto Kaggle website for scoring:
-
-# predictions=std_scaler_inverse(random_forest_model.predict(test),mean_,std_)
-#my_df = pd.DataFrame(predictions)
-#my_df.to_csv('whorton_predictions.csv', index=False, header=False)
-
-
-# # 'train_set' Modeling Summary
-# 
-# Using only features given along with the price target variable we are already able to beat the 'all-zeros' benchmark model with nearly all algorithms examined so far.  Tuning of hyperparameters can result in a better fit of price.
-# 
-# With a score 0f 0.91, the random forest model is obviously better than predicting all zeros for the price of a tube assembly.  This model does not incorporate any data on the components, and could be improved by adding more relevant features or fine-tuning the models a bit more.
-
-# # Incorporating Tube Assembly and Specifications In Modeling Price
-# 
-# ** Data Preprocessing **
-# 
-# ** specs table **
-# 
 # The 'specs' table has the specifications of each tube assembly.  There could be up to 10 specifications for a single tube assembly.  This table can be converted to a indicator variable table with the **tube_assembly_id** as the key.
 
 # In[5]:
@@ -574,11 +242,6 @@ specs_pre=pd.concat(
            pd.get_dummies(specs[['spec1','spec2','spec3','spec4','spec5','spec6','spec7','spec8']], drop_first=True,)],
           axis=1
 )
-
-
-# ** tube table **
-# 
-# The 'tube' table with info on each tube assembly has several continuous inputs and 'end' specs which will be converted to indicator variables.  The **tube_assembly_id** will be the key.
 
 # In[6]:
 
@@ -668,7 +331,6 @@ NN_sklearn.fit(X_train,y_train)
 NN_sklearn_mse_train = mean_squared_error(y_train,NN_sklearn.predict(X_train))
 NN_sklearn_mse_valid = mean_squared_error(y_test,NN_sklearn.predict(X_test))
 
-
 # In[50]:
 
 #Neural Network Regressor (Using Keras)
@@ -684,7 +346,6 @@ model.add(Dense(1))
 model.summary()
 model.compile(loss='mean_squared_error', optimizer='rmsprop')
 
-
 # In[51]:
 
 X = X_train.as_matrix()
@@ -692,7 +353,6 @@ y = y_train.as_matrix()
 model.fit(X,y,epochs=10,batch_size=10)
 NN_keras_mse_train = mean_squared_error(y_train.as_matrix(),model.predict(X_train.as_matrix()))
 NN_keras_mse_valid = mean_squared_error(y_test.as_matrix(),model.predict(X_test.as_matrix()))
-
 
 # In[52]:
 
@@ -749,22 +409,10 @@ random_forest_rmsle=rmsle(
 rmsle_dict = dict({'All Zeros':all_zeros_rmsle,'Random Forest':random_forest_rmsle})
 rmsle_dict
 
-
-# In[56]:
-
-# For output to put onto Kaggle website for scoring:
-
 predictions=std_scaler_inverse(random_forest_model.predict(test),mean_,std_)
 my_df = pd.DataFrame(predictions)
 my_df.to_csv('whorton_predictions2.csv', index=False, header=False)
 
-
-# 0.846 is the new score using this new Random Forest model with added features
-
-# 
-# # Incorporating Individual Components in Modeling Price
-# 
-# # Component Features
 
 # In[7]:
 
@@ -812,7 +460,6 @@ float_merged
 comp_float_wt = float_merged.quantity_1*float_merged.weight+float_merged.quantity_2*float_merged.weight_2 + float_merged.quantity_3*float_merged.weight_3
 comp_float_thick = float_merged.quantity_1*float_merged.thickness+float_merged.quantity_2*float_merged.thickness_2 + float_merged.quantity_3*float_merged.thickness_3
 
-
 # In[10]:
 
 # Table merges for comp_elbow components, only first 5 component ids need merged with the bill of materials dataset
@@ -831,7 +478,6 @@ elbow_merged=elbow_merged.replace(np.nan,0)
 comp_elbow_wt = elbow_merged.quantity_1*elbow_merged.weight + elbow_merged.quantity_2*elbow_merged.weight_2 + elbow_merged.quantity_3*elbow_merged.weight_3 + elbow_merged.quantity_4*elbow_merged.weight_4 + elbow_merged.quantity_5*elbow_merged.weight_5
 comp_elbow_thick = elbow_merged.quantity_1*elbow_merged.thickness + elbow_merged.quantity_2*elbow_merged.thickness_2 + elbow_merged.quantity_3*elbow_merged.thickness_3 + elbow_merged.quantity_4*elbow_merged.thickness_4 + elbow_merged.quantity_5*elbow_merged.thickness_5
 comp_elbow_len = elbow_merged.quantity_1*elbow_merged.overall_length + elbow_merged.quantity_2*elbow_merged.overall_length + elbow_merged.quantity_3*elbow_merged.overall_length_3 + elbow_merged.quantity_4*elbow_merged.overall_length_4 + elbow_merged.quantity_5*elbow_merged.overall_length_5
-
 
 # In[11]:
 
@@ -1099,9 +745,6 @@ random_forest_rmsle=rmsle(
 rmsle_dict = dict({'All Zeros':all_zeros_rmsle,'Random Forest':random_forest_rmsle})
 rmsle_dict
 
-
-# Some improvement incorporating new features.
-
 # In[74]:
 
 std_scaler = StandardScaler()
@@ -1120,31 +763,9 @@ test = pd.merge(df,specs_pre).drop('tube_assembly_id',axis=1)
 
 # In[75]:
 
-# For output to put onto Kaggle website for scoring:
-
 predictions=std_scaler_inverse(random_forest_model.predict(test),mean_,std_)
 my_df = pd.DataFrame(predictions)
 my_df.to_csv('whorton_predictions3.csv', index=False, header=False)
-
-
-# Improved to 0.796455
-
-# ** Continuous Feature Changes or Imputations **
-# 
-# comp_adaptor:
-# Thread size number 2 and thread pitch number 2 each have a single erroneous value of 9999, to be replaced with NaN
-# 
-# comp_boss:
-# Looks to me that the 999 value is erroneous, but shouldn't be mean or median imputed.  This is a feature of a particular component, but still continous.  Change to NaN or Null.
-# 
-# comp_sleeve:
-# Change the 9999 values to NaN
-# 
-# comp_elbow:
-# Change the 9999 values to NaN.
-# 
-# comp_threaded:
-# Nominal size 4 has no values contained in it.  Nominal size 3 and size 2 has a maximum value of 9999.
 
 # In[76]:
 
@@ -1193,15 +814,6 @@ component_match_df = pd.DataFrame({'Bill of Materials': component_id_list,
                   })
 component_match_df
 
-
-# # Dimension Reduction and Feature Engineering
-
-# In[22]:
-
-x=round(X_train.shape[0]*1.0/X_train.shape[1]*1.0,0)
-print("Observations per feature: "+str(x))
-
-
 # In[36]:
 
 X_train_num = X_train[[
@@ -1222,7 +834,6 @@ X_test_num = X_test[[
 'comp_threaded_len','comp_threaded_wt'
 ]]
 
-
 # In[37]:
 
 X_train_num.shape[1]
@@ -1237,7 +848,6 @@ print(pca.explained_variance_ratio_)
 princ_comps = pd.DataFrame(X_train_num2D)
 princ_comps.columns = ('pc1','pc2')
 
-
 # In[39]:
 
 df=X_train.drop(X_train_num,axis=1)
@@ -1251,7 +861,6 @@ princ_comps2.columns= ('pc1','pc2')
 df2 = princ_comps2
 X_test=pd.concat([df.reset_index(),df2],axis=1)
 X_test=X_test.drop('index',axis=1)
-
 
 # In[40]:
 
@@ -1303,7 +912,6 @@ NN_sklearn.fit(X_train,y_train)
 NN_sklearn_mse_train = mean_squared_error(y_train.as_matrix(),NN_sklearn.predict(X_train.as_matrix()))
 NN_sklearn_mse_valid = mean_squared_error(y_test.as_matrix(),NN_sklearn.predict(X_test.as_matrix()))
 
-
 # In[84]:
 
 #Neural Network Regressor (Using Keras)
@@ -1319,14 +927,12 @@ model.add(Dense(1))
 model.summary()
 model.compile(loss='mean_squared_error', optimizer='rmsprop')
 
-
 # In[85]:
 
 X = X_train.as_matrix()
 y = y_train.as_matrix()
 model.fit(X,y,epochs=10,batch_size=10)
 NN_keras_mse = mean_squared_error(y_test.as_matrix(),model.predict(X_test.as_matrix()))
-
 
 # In[86]:
 
@@ -1351,13 +957,6 @@ valid_mse_dict = dict({'All Zeros': (all_zeros_mse),
                })
 valid_mse_dict
 
-
-# # Summary Of Initial Modeling
-# 
-# Best so far: Including components, but not using principal components for continuous predictors
-# 
-# 
-
 # # Random Forest Regressor Grid Search & Feature Importance
 
 # In[18]:
@@ -1375,7 +974,6 @@ df=pd.merge(train,tube_pre,on='tube_assembly_id')
 df=pd.merge(df,components_df_std,on='tube_assembly_id',how='left')
 train = pd.merge(df,specs_pre).drop('tube_assembly_id',axis=1)
 
-
 # In[19]:
 
 # Split training dataset into 'train' and 'test'
@@ -1387,7 +985,6 @@ X_train, X_test, y_train, y_test = train_test_split(features, price, test_size=0
 
 print("Training and testing split was successful.")
 
-
 # In[21]:
 
 #Random Forest Regressor
@@ -1395,7 +992,6 @@ random_forest_model = RandomForestRegressor()
 random_forest_model.fit(X_train,y_train)
 random_forest_model_mse = mean_squared_error(y_test,random_forest_model.predict(X_test))
 random_forest_model_mse
-
 
 # In[22]:
 
@@ -1411,18 +1007,9 @@ random_forest_model = grid_search.best_estimator_
 random_forest_model_mse = mean_squared_error(y_test,random_forest_model.predict(X_test))
 print(random_forest_model_mse)
 
-
 # In[27]:
 
 print(grid_search.best_params_)
-
-
-# In[28]:
-
-#cvres = grid_search.cv_results_
-#for mean_score, params in zip(cvres["mean_test_score"],cvres["params"]):
-#    print(np.sqrt(-mean_score),params)
-
 
 # In[23]:
 
@@ -1432,13 +1019,11 @@ attributes = list(X_train.columns)
 features_all=sorted(zip(feature_importances,attributes),reverse=True)
 #print(type(sorted(zip(feature_importances,attributes),reverse=True)))
 
-
 # In[24]:
 
 df=pd.DataFrame(features_all)
 df.columns = ('Importance','Feature_Name')
 df[df['Importance']>0.001]
-
 
 # In[143]:
 
@@ -1449,7 +1034,6 @@ plt.xlabel('Index')
 plt.ylabel('Importance')
 plt.bar(x,y)
 plt.show()
-
 
 # In[135]:
 
@@ -1462,7 +1046,6 @@ plt.ylabel('Importance')
 plt.bar(x,y)
 plt.show()
 
-
 # In[116]:
 
 # For output to put onto Kaggle website for scoring:
@@ -1470,14 +1053,12 @@ plt.show()
 my_df = pd.DataFrame(sorted(zip(feature_importances,attributes),reverse=True))
 my_df.to_csv('features.csv', index=False, header=False)
 
-
 # In[25]:
 
 best_attributes = sorted(zip(feature_importances,attributes),reverse=True)
 best_attributes_30 = (dict(best_attributes[:58])).values()
 X_train=X_train[list(best_attributes_30)]
 X_test=X_test[list(best_attributes_30)]
-
 
 # In[32]:
 
@@ -1491,7 +1072,6 @@ random_forest_model_mse
 # In[33]:
 
 random_forest_model
-
 
 # In[26]:
 
@@ -1671,26 +1251,12 @@ predictions=std_scaler_inverse(random_forest_model.predict(test),mean_,std_)
 my_df = pd.DataFrame(predictions)
 my_df.to_csv('whorton_predictions4.csv', index=False, header=False)
 
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# # Graphing the improvements
-
 # In[101]:
 
 modeling_dict = {'Baseline':2.35,'RF 1':0.911177,'RF 2':0.846427,'RF 3':0.796455,'RF 4':0.578730}
 objects = modeling_dict.keys()
 y_pos = np.arange(len(objects))
 performance = modeling_dict.values()
-
 
 # In[102]:
 
@@ -1729,9 +1295,6 @@ plt.show()
 
 # In[ ]:
 
-
-
-
 # # Ensemble Learning
 
 # In[103]:
@@ -1749,7 +1312,6 @@ df=pd.merge(train,tube_pre,on='tube_assembly_id')
 df=pd.merge(df,components_df_std,on='tube_assembly_id',how='left')
 train = pd.merge(df,specs_pre).drop('tube_assembly_id',axis=1)
 
-
 # In[104]:
 
 # Split training dataset into 'train' and 'test'
@@ -1760,7 +1322,6 @@ features = train.drop('cost_std_scaled',axis=1)
 X_train, X_test, y_train, y_test = train_test_split(features, price, test_size=0.20, random_state=42)
 
 print("Training and testing split was successful.")
-
 
 # In[105]:
 
@@ -1777,29 +1338,23 @@ df=pd.merge(test,tube_pre,on='tube_assembly_id')
 df=pd.merge(df,components_df_std,on='tube_assembly_id',how='left')
 test = pd.merge(df,specs_pre).drop('tube_assembly_id',axis=1)
 
-
 # In[106]:
 
 ada_reg = AdaBoostRegressor(DecisionTreeRegressor(max_depth=5),n_estimators=300,learning_rate=1)
 ada_reg.fit(X_train,y_train)
 mean_squared_error(ada_reg.predict(X_test),y_test)
 
-
 # In[107]:
-
-# For output to put onto Kaggle website for scoring:
 
 predictions=std_scaler_inverse(ada_reg.predict(test),mean_,std_)
 my_df = pd.DataFrame(predictions)
 my_df.to_csv('whorton_predictions5.csv', index=False, header=False)
-
 
 # In[108]:
 
 gbrt = GradientBoostingRegressor(max_depth=100,n_estimators=100,learning_rate=0.1)
 gbrt.fit(X_train,y_train)
 mean_squared_error(gbrt.predict(X_test),y_test)
-
 
 # In[109]:
 
@@ -1811,7 +1366,6 @@ gbrt_best = GradientBoostingRegressor(max_depth=100,n_estimators=bst_n_estimator
 gbrt_best.fit(X_train,y_train)
 mean_squared_error(gbrt_best.predict(X_test),y_test)
 
-
 # In[110]:
 
 gbrt = GradientBoostingRegressor(max_depth=20,n_estimators=120)
@@ -1821,13 +1375,3 @@ bst_n_estimators=np.argmin(errors)
 gbrt_best = GradientBoostingRegressor(max_depth=20,n_estimators=bst_n_estimators)
 gbrt_best.fit(X_train,y_train)
 mean_squared_error(gbrt_best.predict(X_test),y_test)
-
-
-# # References
-# 
-# Geron, Aurelien.  "Hands-On Machine Learning with SciKit-Learn & Tensorflow"  Chapter 7 pages 181 - 203
-
-# In[ ]:
-
-
-
