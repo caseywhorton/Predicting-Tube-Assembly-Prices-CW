@@ -17,6 +17,6 @@
   
   + Included files:
     + *Predicting_Tube_Assembly_Prices.ipynb* : Jupyter notebook for the project
-    + *Predicting_Tube_Aseemlby.py* : Python code for the project
+    + *Predicting_Tube_Assemlby.py* : Python code for the project
     + *RMSLE.jpg*: Picture of the RMSLE formula, taken from https://www.kaggle.com/c/caterpillar-tube-pricing#evaluation
     + *Schema.jpg*: Picture of table relationship schema, created in Microsoft Power Point
