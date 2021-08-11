@@ -1,4 +1,6 @@
-<img src="Schema.JPG" width="1250" height="500">
+<img src="images/tian-kuan-9AxFJaNySB8-unsplash.jpg" width="1000" height="450">
+Photo by <a href="https://unsplash.com/@realaxer?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">tian kuan</a> on <a href="https://unsplash.com/s/photos/pipe?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
 
 # Predicting-Tube-Assembly-Prices-CW README
 
