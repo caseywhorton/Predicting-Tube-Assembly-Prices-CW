@@ -1,3 +1,5 @@
+<img src="Schema.JPG" width="1250" height="500">
+
 # Predicting-Tube-Assembly-Prices-CW README
 
 ## Contents
